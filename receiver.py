@@ -61,7 +61,7 @@ def bt_irq(event, data):
     if event == _IRQ_SCAN_RESULT:
         addr_type, addr, connectable, rssi, adv_data = data
         addr_hex = ubinascii.hexlify(addr)
-        if '{}'.format(addr_hex) == 'b\'94b97ed9edd6\'':
+        if '{}'.format(addr_hex) == 'b\'mac_address\'':
             name = "name"
             print('name:{} addr:{} rssi:{} '.format(name, addr_hex, rssi ))
             send_db(name, str(addr_hex), rssi)
