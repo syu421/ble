@@ -47,24 +47,24 @@ hx, hy, hz = 2.0, 0.0, 2.0
 
 x, y, z = sympy.symbols("x y z")
 
-AB = (2*ax - 2*bx)*x + (2*ay - 2*by)*y + (2*az - 2*bz)*z - distance_b**2 + distance_a**2 - (ax**2 + ay**2 + az**2) + (bx**2 + by**2 + bz**2)
-AB_l = (2*ax - 2*bx)*x + (2*ay - 2*by)*y + (2*az - 2*bz)*z
-AB_r = distance_b**2 - distance_a**2 + (ax**2 + ay**2 + az**2) - (bx**2 + by**2 + bz**2)
-AC = (2*ax - 2*cx)*x + (2*ay - 2*cy)*y + (2*az - 2*cz)*z - distance_c**2 + distance_a**2 - (ax**2 + ay**2 + az**2) + (cx**2 + cy**2 + cz**2)
-BC = (2*bx - 2*cx)*x + (2*by - 2*cy)*y + (2*bz - 2*cz)*z - distance_c**2 + distance_b**2 - (bx**2 + by**2 + bz**2) + (cx**2 + cy**2 + cz**2)
+#AB = (2*ax - 2*bx)*x + (2*ay - 2*by)*y + (2*az - 2*bz)*z - distance_b**2 + distance_a**2 - (ax**2 + ay**2 + az**2) + (bx**2 + by**2 + bz**2)
+#AB_l = (2*ax - 2*bx)*x + (2*ay - 2*by)*y + (2*az - 2*bz)*z
+#AB_r = distance_b**2 - distance_a**2 + (ax**2 + ay**2 + az**2) - (bx**2 + by**2 + bz**2)
+#AC = (2*ax - 2*cx)*x + (2*ay - 2*cy)*y + (2*az - 2*cz)*z - distance_c**2 + distance_a**2 - (ax**2 + ay**2 + az**2) + (cx**2 + cy**2 + cz**2)
+#BC = (2*bx - 2*cx)*x + (2*by - 2*cy)*y + (2*bz - 2*cz)*z - distance_c**2 + distance_b**2 - (bx**2 + by**2 + bz**2) + (cx**2 + cy**2 + cz**2)
 
 #print(AB_l)
 #print(AB_r)
 #AB = AB_r/(AB_l/y)
-print(AB)
-print(AC)
-print(BC)
-#print(f"AB:{AB}, AC:{AC}, BC:{BC}")
+#print(AB)
+#print(AC)
+#print(BC)
+#print(f"AB:{FG}, AC:{FH}, BC:{GH}")
 #y = 4.206 / 4.0
 #print(y)
 #x = 2.8868 / 4.0
 #print(x)
 #z = 0
 #print(f"(x,y,z) = {(x, y, z)}")
-a = sympy.solve(AB, AC, BC)
-print(a)
+#a = sympy.solve(FG, FH, GH)
+#print(a)
