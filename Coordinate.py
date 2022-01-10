@@ -92,18 +92,18 @@ def ABF(ax, ay, az, ABF_y, ABF_z, distance_a):
     ABF_right = distance_a**2 - (ABF_y - ay)**2 - (ABF_z - az)**2 - ax**2
     ABF_func = sympy.solve(ABF_left + ABF_right)
     return round(ABF_func[1],1)
-#AG使用不可のち編集
-def AG(ax, ay, gx, gy, ABG_y ,distance_a, distance_g):
+
+def ABG(ax, ay, az, gx, gy, ABG_y ,distance_a, distance_g):
     AG_left = 2*(ax - gx)*x
     AG_right = distance_g**2 - distance_a**2 + (ax**2 + ay**2) - (gx**2 + gy**2) - 2*(ay - gy)*ABG_y
     AG_x = round(AG_right / (AG_left / x),1)
-    return AG_x
-
-def ABG(ax, ay, az, ABG_x, ABG_y, distance_a):
+    
     ABG_left = z**2 - 2*az*z
-    ABG_right = distance_a**2 - (ABG_y - ay)**2 - (ABG_x - ax)**2 - az**2
+    ABG_right = distance_a**2 - (ABG_y - ay)**2 - (AG_x - ax)**2 - az**2
     ABG_func = sympy.solve(ABG_left + ABG_right)
-    return round(ABG_func[1],1)
+    AB_z = round(ABG_func[1],1)
+
+    return AG_x, AB_z
 
 def AH(ax, ay, hx, hy, distance_a, distance_h):
     AH_left = 2*(ax - hx)*x + 2*(ay - hy)*y
@@ -562,8 +562,7 @@ print(f"ABF(x, y, z) = {ABF_x, ABF_y, ABF_z}")
 
 #ABG
 ABG_y = AB(ax , ay, az, bx, by, bz, distance_a, distance_b)
-ABG_x = AG(ax, ay, gx, gy, ABG_y ,distance_a, distance_g)
-ABG_z = ABG(ax, ay, az, ABG_y, ABG_x, distance_a)
+ABG_x, ABG_z = ABG(ax, ay, az, gx, gy, ABG_y ,distance_a, distance_g)
 print(f"ABG(x, y, z) = {ABG_x, ABG_y, ABG_z}")
 
 #ABH
@@ -632,7 +631,7 @@ AEF_x = AEF(ax, ay, az, distance_a, AEF_y, AEF_z)
 print(f"AEF(x, y, z) = {AEF_x, AEF_y, AEF_z}")
 
 #AEG
-AEG_x = AG(ax, ay, gx, gy, ABG_y ,distance_a, distance_g)
+AEG_x = EG(ex, ez, gx, gz, distance_e, distance_g)
 AEG_z = AE(ax, ay, az, ex, ey, ez, distance_a, distance_e)
 AEG_y = AEG(ax, ay, az, AEG_x, AEG_z, distance_a)
 print(f"AEG(x, y, z) = {AEG_x, AEG_y, AEG_z}")
@@ -644,7 +643,7 @@ AEH_y = AEH(ax, ay, az, AEH_x, AEH_z, distance_a)
 print(f"AEH(x, y, z) = {AEH_x, AEH_y, AEH_z}")
 
 #AFG
-AFG_x = AG(ax, ay, gx, gy, ABG_y ,distance_a, distance_g)
+AFG_x = FG(fx, fy, fz, gx, gy, gz, distance_f, distance_g)
 AFG_z = AF(ax, az, fx, fz, distance_a, distance_f)
 AFG_y = AFG(ax, ay, az, AFG_x, AFG_z, distance_a)
 print(f"AFG(x, y, z) = {AFG_x, AFG_y, AFG_z}")
@@ -656,7 +655,7 @@ AFH_y = AFH(ax, ay, az, AFH_x, AFH_z, distance_a)
 print(f"AFH(x, y, z) = {AFH_x, AFH_y, AFH_z}")
 
 #AGH
-AGH_x = AG(ax, ay, gx, gy, ABG_y ,distance_a, distance_g)
+AGH_x = AH(ax, ay, hx, hy, distance_a, distance_h)
 AGH_y = GH(gx, gy, gz, hx, hy, hz, distance_g, distance_h)
 AGH_z = AGH(ax, ay, az, AGH_x, AGH_y, distance_a)
 print(f"AGH(x, y, z) = {AGH_x, AGH_y, AGH_z}")
